@@ -17,11 +17,12 @@ export function apolloFactory() {
 
     return forward(operation);
   });
-
+  const domain = 'localhost'
+  // const domain ='skills-production.up.railway.app';
   return {
     link: authLink.concat(
       httpLink.create({
-        uri:process.env.BACKEND_URL+'graphql',
+        uri: `https://${domain}:3000/graphql`,
       }),
     ),
     cache: new InMemoryCache(),

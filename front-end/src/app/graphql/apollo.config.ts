@@ -18,7 +18,6 @@ export function apolloFactory() {
     return forward(operation);
   });
   const domain = 'skill-hub-in82.onrender.com'
-  // const domain ='skills-production.up.railway.app';
   return {
     link: authLink.concat(
       httpLink.create({

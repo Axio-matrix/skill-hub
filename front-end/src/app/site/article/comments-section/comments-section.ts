@@ -93,12 +93,12 @@ const GET_ARTICLE_VIEWS_COUNT = gql`
 `;
 
 enum ReactionType {
-  LOVE = 'LOVE',
-  LIKE = 'LIKE',
-  FIRE = 'FIRE',
-  CELEBRATE = 'CELEBRATE',
-  INSIGHTFUL = 'INSIGHTFUL',
-  THINKING = 'THINKING'
+  LOVE = 'love',
+  LIKE = 'like',
+  FIRE = 'fire',
+  CELEBRATE = 'celebrate',
+  INSIGHTFUL = 'insightful',
+  THINKING = 'thinking'
 }
 
 interface Reaction {
@@ -150,7 +150,7 @@ export class CommentsSection implements OnInit {
   newComment: string = '';
   replyText: { [key: string]: string } = {};
   showReactionPicker: boolean = false;
-  totalReactions: number = 0;
+  totalReactions: number =0;
   viewsCount: number = 0;
   isLoading: boolean = false;
   isSubmitting: boolean = false;
@@ -183,7 +183,6 @@ export class CommentsSection implements OnInit {
           r.hasReacted = false;
           r.reactionId = undefined;
         });
-
         const reactionCounts: { [key: string]: number } = {};
         const userReactions: { [key: string]: number } = {};
 
@@ -371,6 +370,7 @@ export class CommentsSection implements OnInit {
   }
 
   calculateTotalReactions() {
+    console.log('aymen here',this.reactions);
     this.totalReactions = this.reactions.reduce((sum, r) => sum + r.count, 0);
   }
 

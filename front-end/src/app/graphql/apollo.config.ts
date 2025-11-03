@@ -17,12 +17,12 @@ export function apolloFactory() {
 
     return forward(operation);
   });
-  const domain = 'localhost'
+  const domain = 'skill-hub-in82.onrender.com'
   // const domain ='skills-production.up.railway.app';
   return {
     link: authLink.concat(
       httpLink.create({
-        uri: `https://${domain}:3000/graphql`,
+        uri: `https://${domain}/graphql`,
       }),
     ),
     cache: new InMemoryCache(),

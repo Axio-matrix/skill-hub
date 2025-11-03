@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import {Router} from "@angular/router"
+import { UserService } from '../../auth/user-service';
 @Component({
   selector: 'app-navbar',
   imports: [
@@ -27,9 +28,11 @@ import {Router} from "@angular/router"
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  isAuthenticated : boolean = false;
+  constructor(private userService : UserService,private router:Router){
+    this.isAuthenticated=this.userService.hasToken();
+  }
   searchQuery: string = '';
-  isAuthenticated: boolean = false;
-  constructor(private router: Router) {}
   goToLogin() {
     this.router.navigate(['/login']);
   }
